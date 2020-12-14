@@ -84,3 +84,7 @@ C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\obj\Debug\WebApplicati
 C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\obj\Debug\WebApplication.csproj.CopyComplete
 C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\obj\Debug\WebApplication.dll
 C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\obj\Debug\WebApplication.pdb
+C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\bin\EntityFramework.dll
+C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\bin\EntityFramework.xml
+C:\Users\Administrator\Desktop\asp.net MVC\WebApplication\bin\EntityFramework.SqlServer.xml

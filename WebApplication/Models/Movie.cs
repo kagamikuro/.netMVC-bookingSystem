@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Data.Entity;
 
 namespace WebApplication.Models
 {
@@ -10,6 +10,11 @@ namespace WebApplication.Models
         public DateTime ReleaseDate { get; set; }
         public string Genre { get; set; }
         public decimal Price { get; set; }
+    }
+
+    public class MovieDBContext : DbContext
+    {
+        public DbSet<Movie> Movies { get; set; }
     }
 
 }
