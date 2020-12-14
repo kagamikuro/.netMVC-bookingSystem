@@ -6,23 +6,23 @@ using System.Web.Mvc;
 
 namespace WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class HelloWorldController : Controller
     {
+       
+        // GET: /HelloWorld/ 
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your about page.";
+        // 
+        // GET: /HelloWorld/Welcome/ 
 
-            return View();
-        }
-
-        public ActionResult Contact()
+        public ActionResult Welcome(String name, int numTimes = 1)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Hello " + name;
+            ViewBag.NumTimes = numTimes;
 
             return View();
         }
