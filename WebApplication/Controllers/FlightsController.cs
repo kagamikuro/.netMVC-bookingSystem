@@ -12,105 +12,105 @@ namespace WebApplication.Controllers
 {
     public class FlightsController : Controller
     {
-        private MovieDBContext db = new MovieDBContext();
+        private FlightDBContext db = new FlightDBContext();
 
-        // GET: Movies
+        // GET: Flights
         public ActionResult Index()
         {
-            return View(db.Movies.ToList());
+            return View(db.Flights.ToList());
         }
 
-        // GET: Movies/Details/5
+        // GET: Flights/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(flight);
         }
 
-        // GET: Movies/Create
+        // GET: Flights/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Flights/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
         // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Create([Bind(Include = "ID,Departure,Distination,DepartureDate,ReturnDate,NumOfPassenger,Price")] Flight flight)
         {
             if (ModelState.IsValid)
             {
-                db.Movies.Add(movie);
+                db.Flights.Add(flight);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(movie);
+            return View(flight);
         }
 
-        // GET: Movies/Edit/5
+        // GET: Flights/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(flight);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Flights/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性；有关
         // 更多详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "ID,Departure,Distination,DepartureDate,ReturnDate,NumOfPassenger,Price")] Flight flight)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
+                db.Entry(flight).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+            return View(flight);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Flights/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            Flight flight = db.Flights.Find(id);
+            if (flight == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(flight);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Flights/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Movie movie = db.Movies.Find(id);
-            db.Movies.Remove(movie);
+            Flight flight = db.Flights.Find(id);
+            db.Flights.Remove(flight);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

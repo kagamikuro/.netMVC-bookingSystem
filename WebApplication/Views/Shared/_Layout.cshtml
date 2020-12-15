@@ -7,6 +7,13 @@
     <title>@ViewBag.Title - book system</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style type="text/css">
+        .blankLi{
+            text-indent:700px;
+        }
+
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,6 +30,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("main page", "Index", "Home")</li>
                     <li>@Html.ActionLink("about", "About", "Home")</li>
+                    <li class="blankLi">&nbsp;</li>
+                    <li>@Html.ActionLink("login", "Login", "Home")</li>
+                    <li>@Html.ActionLink("register", "Register", "Home")</li>
+
                 </ul>
             </div>
         </div>

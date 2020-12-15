@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+
+        private UserContext db = new UserContext();
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +30,46 @@ namespace WebApplication.Controllers
 
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "UserID,UserName,UserPwd")] User user)
+        {
+
+            User u = db.user.FirstOrDefault(a => a.UserName == user.UserName && a.UserPwd == user.UserPwd);
+
+            if (u != null)
+                ViewBag.Message = "Login Success";
+            else
+                ViewBag.Message = "Login Fail";
+
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Register([Bind(Include = "UserID,UserName,UserPwd")] User user)
+        {
+            if (db.user.Where(a => a.UserName == user.UserName).Count() == 0)
+            {
+                db.user.Add(user);
+                db.SaveChanges();
+                ViewBag.Message = "Register Success";
+            }
+            else
+                ViewBag.Message = "Register Fail";
+            return View();
+        }
+
     }
 }

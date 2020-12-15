@@ -1,24 +1,30 @@
-﻿@model IEnumerable<WebApplication.Models.Movie>
+﻿@model IEnumerable<WebApplication.Models.Flight>
 
 @{
-    ViewBag.Title = "Flights booking system";
+    ViewBag.Title = "Flights";
 }
 
-<h2>Flights</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Book New Flight", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Departure)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @Html.DisplayNameFor(model => model.Distination)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @Html.DisplayNameFor(model => model.DepartureDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumOfPassenger)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -29,13 +35,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.DisplayFor(modelItem => item.Departure)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
+            @Html.DisplayFor(modelItem => item.Distination)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Genre)
+            @Html.DisplayFor(modelItem => item.DepartureDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReturnDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumOfPassenger)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
