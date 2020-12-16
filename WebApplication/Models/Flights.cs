@@ -9,9 +9,15 @@ namespace WebApplication.Models
         public int ID { get; set; }
 
         [Display(Name = "Departure City")]
+        [RegularExpression(@"^[a-zA-Z'\s]*$")]
+        [Required]
+        [StringLength(60, MinimumLength = 3)]
         public string Departure { get; set; }
 
         [Display(Name = "Distination City")]
+        [RegularExpression(@"^[a-zA-Z'\s]*$")]
+        [Required]
+        [StringLength(60, MinimumLength = 3)]
         public string Distination { get; set; }
 
         [Display(Name = "Departure Date")]
@@ -24,6 +30,9 @@ namespace WebApplication.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ReturnDate { get; set; }
         public int NumOfPassenger { get; set; }
+
+        [Range(1, 500000)]
+        [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
         public String CreateByUser { get; set; }

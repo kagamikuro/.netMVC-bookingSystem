@@ -4,60 +4,68 @@
     ViewBag.Title = "Flights";
 }
 
-<h2>Index</h2>
+<h2>Flight Booking</h2>
 
 <p>
     @Html.ActionLink("Book New Flight", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Departure)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Distination)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DepartureDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReturnDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumOfPassenger)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Departure)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Distination)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartureDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReturnDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumOfPassenger)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+    @using (Html.BeginForm())
+    {
+    <p>
+        Search by distination: @Html.TextBox("SearchString") <br />
+        <input type="submit" value="search" />
+    </p>
 }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartureDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfPassenger)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Distination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumOfPassenger)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>

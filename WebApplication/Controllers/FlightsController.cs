@@ -15,10 +15,27 @@ namespace WebApplication.Controllers
         private FlightDBContext db = new FlightDBContext();
 
         // GET: Flights
+        /*
         public ActionResult Index()
         {
             return View(db.Flights.ToList());
         }
+        */
+
+        public ActionResult Index(string searchString)
+        {
+
+            var flights = from f in db.Flights
+                         select f;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                flights = flights.Where(s => s.Distination.Contains(searchString));
+            }
+
+            return View(flights);
+        }
+
 
         // GET: Flights/Details/5
         public ActionResult Details(int? id)
