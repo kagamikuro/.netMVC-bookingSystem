@@ -43,9 +43,9 @@ namespace WebApplication.Controllers
             User u = db.user.FirstOrDefault(a => a.UserName == user.UserName && a.UserPwd == user.UserPwd);
 
             if (u != null)
-                ViewBag.Message = "Login Success";
+                ViewBag.Message = "Login Success!";
             else
-                ViewBag.Message = "Login Fail";
+                ViewBag.Message = "Login Fail!";
 
 
             return View();
@@ -64,10 +64,10 @@ namespace WebApplication.Controllers
             {
                 db.user.Add(user);
                 db.SaveChanges();
-                ViewBag.Message = "Register Success";
+                ViewBag.Message = "Register Success!";
             }
             else
-                ViewBag.Message = "Register Fail";
+                ViewBag.Message = "Register Fail!";
             return View();
         }
 

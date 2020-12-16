@@ -3,23 +3,68 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>login</title>
 
+    <style type="text/css">
+        .message {
+            color: aqua;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+
+        function setCookie(key, value, t) {
+            var oDate = new Date();
+            oDate.setDate(oDate.getDate() + t);
+            document.cookie = key + '=' + value + ';expires=' + oDate.toGMTString();
+        }
+
+        function getCookie(key) {
+            var arr1 = document.cookie.split('; ');
+            for (var i = 0; i < arr1.length; i++) {
+                var arr2 = arr1[i].split('=');
+                if (arr2[0] == key) {
+                    return decodeURI(arr2[1]);
+                }
+            }
+        }
+
+        function validate() {
+
+            var message = document.getElementsByClassName("message");
+            console.log(message);
+
+            if (message == "Login Success!")
+                setCookie("login", "true", 5);
+            else
+                setCookie("login", "false", 5);
+        }
+
+    </script>
+
 </head>
 <body>
 
     <div id="center">
-        <form name="myform" onSubmit="return validateform()" enctype="multipart/form-data" action="Login" method="post">
+        <form name="myform" id="myform" onSubmit="return validate()" enctype="multipart/form-data" action="Login" method="post">
             <div class="input-group">
-                Username:<input class="form-control" id="username" name="username" type="text" style="height:20px" value="" />
+                Username:<input class="form-control" id="UserName" name="UserName" type="text" style="height:20px" value="" />
             </div>
             <div class="input-group">
-                Password:<input class="form-control" id="password" name="password" type="password" style="height:20px" value="" />
+                Password:<input class="form-control" id="UserPwd" name="UserPwd" type="password" style="height:20px" value="" />
             </div>
 
             <div id="btn">
-                <INPUT class="btn btn-primary" name="loginButton" type="submit" id="Button" value="login">
+                <input class="btn btn-primary" name="loginButton" type="submit" id="Button" value="login" >
             </div>
         </form>
     </div>
+
+    <script>
+
+
+    </script>
+
+    <p class="message">@ViewBag.Message</p>
 
 </body>
 </html>
